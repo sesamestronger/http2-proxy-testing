@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "moduleResolution": "node",
+        "module": "commonjs",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "esModuleInterop":true,
+        "outDir": "dist/",
+        "sourceMap": true,
+        "lib":["es2019"],
+        "typeRoots":["node_modules/@types","src/types"]
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts",
+        "dist/**/*"
+    ],
+    "target":"es2019"
+}

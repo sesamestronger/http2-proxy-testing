@@ -1,0 +1,18 @@
+version: '3'
+services:
+  proxy:
+    image: "mitmproxy/mitmproxy"
+    ports:
+      - "8081:8081"
+    volumes:
+      - ~/.mitmproxy:/home/mitmproxy/.mitmproxy
+    entrypoint: mitmweb --web-host 0.0.0.0
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ~/.mitmproxy:/usr/share/ca-certificates/mitmproxy
+    environment:
+      NODE_EXTRA_CA_CERTS: /usr/share/ca-certificates/mitmproxy/mitmproxy-ca-cert.pem
+      GLOBAL_AGENT_HTTP_PROXY: http://proxy:8080
